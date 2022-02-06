@@ -14,9 +14,9 @@ import { BoxModule } from './box/box.module';
   imports: [
     MikroOrmModule.forRoot({
       entities: [UserEntity, BoxEntity],
-      dbName: 'test-db',
+      dbName: process.env.MONGO_DB_NAME || 'test-db',
       type: 'mongo',
-      clientUrl: 'mongodb://admin:pass123@localhost:27017',
+      clientUrl: process.env.MONGO_URL || 'mongodb://admin:pass123@localhost:27017',
     }),
     UserModule,
     BoxModule,
